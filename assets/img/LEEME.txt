@@ -1,0 +1,16 @@
+Coloca aquí las fotos con estos nombres exactos (formato .jpg):
+
+parque-nacional.jpg   ->  Parque Nacional Tingo María
+bella-durmiente.jpg   ->  La Bella Durmiente
+cueva-lechuzas.jpg   ->  Cueva de las Lechuzas
+cueva-pavas.jpg   ->  Cueva de las Pavas
+catarata-santa-carmen.jpg   ->  Catarata Santa Carmen
+velo-ninfas.jpg   ->  Velo de las Ninfas
+laguna-milagro.jpg   ->  Laguna El Milagro
+jardin-botanico.jpg   ->  Jardín Botánico de Tingo María
+juane.jpg   ->  Juane
+tacacho-cecina.jpg   ->  Tacacho con cecina
+fiesta-san-juan.jpg   ->  Fiesta de San Juan
+aniversario.jpg   ->  Aniversario de Tingo María
+
+Si falta una foto, la app simplemente muestra ese lugar sin imagen.

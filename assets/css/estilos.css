@@ -1,0 +1,143 @@
+/* Tingo María Turismo
+   Paleta: selva, río, niebla, papel, guacamayo (acento), tinta */
+:root {
+    --selva: #12372a;
+    --rio: #1f6f78;
+    --niebla: #e6eee8;
+    --papel: #fafcfa;
+    --guacamayo: #f4c430;
+    --tinta: #14201a;
+    --tinta-suave: #4b5a52;
+    --peligro: #a3261b;
+    --fuente: "Bricolage Grotesque", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: var(--fuente);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--tinta);
+    background: var(--niebla);
+}
+
+a { color: var(--rio); text-underline-offset: 0.18em; }
+a:hover { color: var(--selva); }
+:focus-visible { outline: 3px solid var(--guacamayo); outline-offset: 2px; }
+
+h1, h2 { line-height: 1.1; margin: 0 0 0.5rem; letter-spacing: -0.015em; }
+p { margin: 0 0 0.75rem; }
+
+.contenedor { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+/* Barra superior */
+.barra { background: var(--selva); color: var(--papel); }
+.barra__fila { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: center; justify-content: space-between; padding-block: 0.9rem; }
+.marca { color: var(--papel); font-weight: 800; font-size: 1.25rem; text-decoration: none; }
+.marca span { font-weight: 400; color: var(--guacamayo); }
+.marca:hover { color: var(--papel); }
+.barra__nav { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+.barra__nav a { color: var(--papel); text-decoration: none; }
+.barra__nav a:hover { color: var(--guacamayo); }
+
+/* Portada: la silueta de los cerros es el único adorno de la página */
+.portada { background: var(--selva); color: var(--papel); position: relative; padding-top: 3.5rem; }
+.portada__texto { position: relative; z-index: 1; padding-bottom: 9rem; }
+.portada h1 { font-size: clamp(2.2rem, 6vw, 4.5rem); font-weight: 800; max-width: 16ch; }
+.portada p { font-size: 1.2rem; max-width: 44ch; color: #cfe0d5; }
+.portada__cerros { position: absolute; left: 0; bottom: -1px; width: 100%; height: 11rem; display: block; }
+.cerros--lejos { fill: var(--rio); }
+.cerros--cerca { fill: var(--niebla); }
+
+/* Filtros */
+.filtros { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding-block: 1.5rem 0.5rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip { padding: 0.35rem 0.9rem; border-radius: 999px; border: 1.5px solid var(--selva); color: var(--selva); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+.chip:hover { background: #d5e3d9; }
+.chip--activo, .chip--activo:hover { background: var(--selva); color: var(--papel); }
+.buscador { display: flex; gap: 0.5rem; flex: 1 1 18rem; max-width: 26rem; }
+.buscador input { flex: 1; min-width: 0; }
+
+input, select, textarea, button { font: inherit; color: inherit; }
+input:not([type="checkbox"]), select, textarea {
+    width: 100%; padding: 0.55rem 0.7rem; border: 1.5px solid #9fb3a6; border-radius: 6px; background: var(--papel);
+}
+.buscador button, .boton {
+    display: inline-block; padding: 0.55rem 1.1rem; border: 0; border-radius: 6px; cursor: pointer;
+    background: var(--guacamayo); color: var(--tinta); font-weight: 700; text-decoration: none;
+}
+.buscador button:hover, .boton:hover { background: #e0b021; color: var(--tinta); }
+
+/* Lista de lugares: filas separadas por una línea; los destacados van en bloque de color */
+.lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0 2rem; padding-block: 1.5rem 4rem; }
+.lugar { border-top: 3px solid var(--selva); padding-block: 1.1rem 1.6rem; }
+.lugar h2 { font-size: 1.45rem; font-weight: 800; }
+.lugar h2 a { color: var(--tinta); text-decoration: none; }
+.lugar h2 a:hover { color: var(--rio); text-decoration: underline; }
+.lugar__categoria { color: var(--rio); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; }
+.lugar__ubicacion { color: var(--tinta-suave); font-size: 0.95rem; }
+.lugar__foto { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 6px; margin-bottom: 0.8rem; display: block; }
+
+.lugar--destacado { background: var(--selva); color: var(--papel); border-top-color: var(--guacamayo); padding: 1.4rem 1.4rem 1.6rem; margin-bottom: 2rem; }
+.lugar--destacado h2 a { color: var(--papel); }
+.lugar--destacado h2 a:hover { color: var(--guacamayo); }
+.lugar--destacado .lugar__categoria { color: var(--guacamayo); }
+.lugar--destacado .lugar__ubicacion { color: #cfe0d5; }
+
+.vacio { grid-column: 1 / -1; padding: 2rem 0; }
+
+/* Ficha de un lugar */
+.ficha { padding-block: 2rem 4rem; }
+.ficha h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; max-width: 20ch; }
+.ficha__volver { margin-bottom: 1.5rem; }
+.ficha__resumen { font-size: 1.3rem; max-width: 50ch; color: var(--tinta-suave); }
+.ficha__foto { width: 100%; max-height: 28rem; object-fit: cover; border-radius: 6px; margin-block: 1rem; display: block; }
+.ficha__columnas { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 2.5rem; margin-top: 2rem; }
+.ficha__texto { max-width: 65ch; }
+.ficha__datos { background: var(--papel); border-left: 4px solid var(--guacamayo); padding: 1.2rem 1.4rem; align-self: start; }
+.ficha__datos h2 { font-size: 1.05rem; margin-top: 0.8rem; }
+.ficha__datos h2:first-child { margin-top: 0; }
+
+/* Panel de administración */
+.panel { padding-block: 2.5rem 4rem; }
+.panel--angosto { max-width: 26rem; }
+.panel--medio { max-width: 44rem; }
+.panel h1 { font-size: 2rem; font-weight: 800; margin-bottom: 1.2rem; }
+.panel__cabecera { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.panel__cabecera h1 { margin: 0; }
+
+.formulario { display: grid; gap: 0.4rem; }
+.formulario label { font-weight: 600; margin-top: 0.7rem; }
+.formulario .casilla { font-weight: 400; display: flex; gap: 0.5rem; align-items: center; }
+.formulario .boton { margin-top: 1rem; justify-self: start; }
+.formulario__acciones { display: flex; gap: 1.2rem; align-items: baseline; }
+
+.aviso { padding: 0.7rem 1rem; border-radius: 6px; margin: 0 0 1rem; }
+ul.aviso { padding-left: 2rem; }
+.aviso--ok { background: #d3ead9; border-left: 4px solid var(--selva); }
+.aviso--error { background: #f6dcd8; border-left: 4px solid var(--peligro); }
+
+.tabla-scroll { overflow-x: auto; }
+.tabla { width: 100%; border-collapse: collapse; background: var(--papel); }
+.tabla th, .tabla td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid #cfdcd3; }
+.tabla th { background: var(--selva); color: var(--papel); font-weight: 600; }
+.tabla__acciones { display: flex; gap: 1rem; align-items: baseline; white-space: nowrap; }
+.tabla__acciones form { margin: 0; }
+.enlace-peligro { background: none; border: 0; padding: 0; color: var(--peligro); text-decoration: underline; cursor: pointer; }
+
+/* Pie */
+.pie { background: var(--selva); color: #cfe0d5; padding-block: 1.5rem; font-size: 0.95rem; }
+.pie p { margin: 0.15rem 0; }
+
+@media (max-width: 720px) {
+    .ficha__columnas { grid-template-columns: 1fr; }
+    .portada__texto { padding-bottom: 6.5rem; }
+    .portada__cerros { height: 7rem; }
+}
+
+/* El pie queda abajo aunque la página tenga poco contenido */
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; }
